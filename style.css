@@ -25,6 +25,11 @@ li {
     padding: 0 15px;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
 
 
 
@@ -238,6 +243,8 @@ header {
     border-radius: 50%;
     color:black;
     background-color: white;
+
+    border: 1px solid gray;
 }
 
 
@@ -723,7 +730,7 @@ header {
 
 /* footerセクション 全体配置 */
 
-.footer {
+footer {
     padding:70px 0 60px;
     background-color: #b89a63;
 }
@@ -1077,7 +1084,7 @@ header {
 }
 
 .ingredients-tab {
-    font-size:15px;
+    font-size:13px;
 }
 
 .ingredients-card h2 {
@@ -1368,3 +1375,118 @@ footer {
 
 
 }
+
+
+
+@media (min-width:769px) and (max-width:1024px) {
+
+    .container {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    /* useセクション */
+    .use-card {
+        width:calc(33.333% - 14px);
+    }
+
+    .use-image > img:first-child {
+        width:100%;
+        height:auto;
+    }
+
+    .use-list {
+        width:100%;
+    }
+
+    .use-product {
+        width:42%;
+        height:auto;
+        top:62%;
+        left:60%;
+    }
+
+    .use-name {
+        font-size:15px;
+    }
+
+    .use-description {
+        font-size:13px;
+    }
+
+    .use-recommend {
+        font-size:14px;
+    }
+
+    .use-point {
+        display:flex;
+        align-items: center;
+    }
+
+    /* productsセクション */
+    .products-lineup h2 {
+        font-size:20px;
+    }
+
+    .products-next,
+    .products-prev {
+        border: 1px solid gray;
+    }
+
+
+
+
+    /* ingredientsセクション */
+    .ingredients-wrap {
+        gap:10px;
+    }
+
+    .ingredients-slider {
+       min-width:0;
+       overflow:hidden;
+    }
+
+    .ingredients-list {
+       width:100%;
+    }
+
+    .ingredients-card {
+       flex:0 0 100%;
+       min-width:100%;
+    }
+
+    .ingredients-card img {
+       width:50%;
+       flex:0 0 50%;
+    }
+
+    .ingredients-description {
+       width:50%;
+       flex:0 0 50%;
+    }
+
+
+    /* selectセクション */
+    .select-card p {
+        font-size:13px;
+    }
+
+    .select-card h3 {
+        font-size:15px;
+    }
+
+    .select-card  {
+        width:25%;
+    }
+
+
+    /* headerセクション */
+    .nav-links a {
+        font-size:13px;
+    }
+
+
+}
+
+
+

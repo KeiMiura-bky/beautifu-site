@@ -102,64 +102,81 @@ document.querySelectorAll(".ingredients-card");
 
 let ingredientsCurrentIndex = 1;
 
-/* 右ボタン index番号 */
-ingredientsNext.addEventListener("click" , () => {
+let ingredientsCurrentIndex = 1;
+
+
+/* ingredientsを現在のindexまで移動 */
+function moveIngredients(behavior = "smooth") {
+
+    ingredientsSlider.scrollTo({
+        left: ingredientsSlider.clientWidth * ingredientsCurrentIndex,
+        behavior: behavior
+    });
+
+}
+
+
+/* 右ボタン */
+ingredientsNext.addEventListener("click", () => {
+
     ingredientsCurrentIndex++;
 
     updateIngredientsDots();
-    
-    /* 右ボタン　移動 */
-    ingredientsSlider.scrollTo({
-       left:AllCards[ingredientsCurrentIndex].offsetLeft - AllCards[0].offsetLeft,
-       behavior:"smooth"
-    });
+
+    moveIngredients();
+
 });
 
 
-/* 左ボタン index番号 */
-ingredientsPrev.addEventListener("click" , () => {
+/* 左ボタン */
+ingredientsPrev.addEventListener("click", () => {
+
     ingredientsCurrentIndex--;
 
     updateIngredientsDots();
 
-    /* 左ボタン　移動 */
-    ingredientsSlider.scrollTo({
-       left:AllCards[ingredientsCurrentIndex].offsetLeft - AllCards[0].offsetLeft,
-       behavior:"smooth"
-    });
+    moveIngredients();
+
 });
 
 
-/* 本物のカード１まで瞬間移動　*/
-ingredientsSlider.scrollTo({
-    left:AllCards[ingredientsCurrentIndex].offsetLeft - AllCards[0].offsetLeft,
-    behavior:"auto"
-});
+/* 最初に本物のカード1まで移動 */
+moveIngredients("auto");
 
 
-/* コピー１から本物のカード１まで瞬間移動 */
-ingredientsSlider.addEventListener("scrollend" , () => {
-    if(ingredientsCurrentIndex === AllCards.length-1 ) {
+/* コピー1 → 本物のカード1 */
+ingredientsSlider.addEventListener("scrollend", () => {
+
+    if (ingredientsCurrentIndex === AllCards.length - 1) {
+
         ingredientsCurrentIndex = 1;
 
-        ingredientsSlider.scrollTo({
-          left:AllCards[ingredientsCurrentIndex].offsetLeft - AllCards[0].offsetLeft,
-          behavior:"auto"
-        });
+        moveIngredients("auto");
+
     }
+
 });
 
 
-/* コピー4から本物のカード4まで瞬間移動 */
-ingredientsSlider.addEventListener("scrollend" , () => {
-    if(ingredientsCurrentIndex === 0 ) {
+/* コピー4 → 本物のカード4 */
+ingredientsSlider.addEventListener("scrollend", () => {
+
+    if (ingredientsCurrentIndex === 0) {
+
         ingredientsCurrentIndex = ingredientsCard.length;
 
-        ingredientsSlider.scrollTo({
-          left:AllCards[ingredientsCurrentIndex].offsetLeft - AllCards[0].offsetLeft,
-          behavior:"auto"
-        });
+        moveIngredients("auto");
+
     }
+
+});
+
+
+/* 画面幅が変わった時も現在のカード位置に合わせる */
+window.addEventListener("resize", () => {
+
+    moveIngredients("auto");
+
 });
 
 
