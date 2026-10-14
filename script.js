@@ -102,8 +102,6 @@ document.querySelectorAll(".ingredients-card");
 
 let ingredientsCurrentIndex = 1;
 
-let ingredientsCurrentIndex = 1;
-
 
 /* ingredientsを現在のindexまで移動 */
 function moveIngredients(behavior = "smooth") {
